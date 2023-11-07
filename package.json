@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.4",
     "@types/node": "^20.8.9",
     "dotenv": "^16.3.1",
     "prisma": "^5.5.2",
@@ -21,10 +22,9 @@
     "@fastify/multipart": "^8.0.0",
     "@prisma/client": "^5.5.2",
     "fastify": "^4.24.3",
-    "fastify-autoload": "^3.13.0",
-    "fastify-jwt": "^4.2.0",
     "fastify-plugin": "^4.5.1",
     "install": "^0.13.0",
+    "jsonwebtoken": "^9.0.2",
     "npm": "^10.2.1",
     "uuid": "^9.0.1"
   }

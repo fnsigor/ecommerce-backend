@@ -1,7 +1,7 @@
 import { prisma } from "../config/prisma";
 import { ILogin } from "../interfaces/ILogin";
 import { IUser } from "../interfaces/IUser";
-import { app } from "../server";
+import { fastify } from "../server";
 
 export class User {
 
@@ -19,7 +19,7 @@ export class User {
             return {status: 400, message: 'Erro ao fazer login. Senha incorreta'}
         }
 
-        const token = app.jwt.sign({ "username": existingUser.name, "email": existingUser.email })
+        const token = fastify.jwt.sign({ "username": existingUser.name, "email": existingUser.email })
 
         return {status: 200, message: 'Login efetuado com sucesso', data: {...existingUser, token}}
        } catch (error) {

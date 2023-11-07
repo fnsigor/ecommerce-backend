@@ -39,7 +39,7 @@ export const login = async (app: FastifyInstance) => {
             const user = req.body as ILogin;
 
             if (!user?.password || !user?.email) {
-                return res.status(400).send({ message: 'Erro ao cadastrar usuário. Infome email e senha.' })
+                return res.status(400).send({ message: 'Erro fazer login. Infome email e senha.' })
             }
 
             const model = new User()

@@ -1,21 +1,21 @@
 import { fastifyCors } from '@fastify/cors';
 import { createUser, login } from './controller/UserController';
+import { createShoppingSession } from './controller/ShoppingSessionController';
 
-export const app = require('fastify')()
+export const fastify = require('fastify')()
 
-app.register(require('@fastify/jwt'), {
-    secret: process.env.SECRET_KEY
-})
-
-app.register(fastifyCors, {
+fastify.register(fastifyCors, {
     origin: '*' //url de onde vai vir a request, * recebe request de todo lugar
 })
 
 
-app.register(createUser)
-app.register(login)
+fastify.register(require('./middlewares/jwt'));
+
+fastify.register(createUser)
+fastify.register(login)
+fastify.register(createShoppingSession)
 
 
-app.listen({
+fastify.listen({
     port: 3333
 }).then(() => console.log('Servidor rodando na porta 3333'))

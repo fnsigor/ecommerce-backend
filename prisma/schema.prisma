@@ -10,14 +10,15 @@ datasource db {
 
 //===========models
 model User {
-  id         Int            @id @default(autoincrement())
-  email      String         @unique
-  password   String
-  name       String
-  orders     OrderDetails[]
-  created_at DateTime       @default(now())
-  updated_at DateTime       @updatedAt
-  deleted    Boolean        @default(false)
+  id              Int               @id @default(autoincrement())
+  email           String            @unique
+  password        String
+  name            String
+  orders          OrderDetails[]
+  created_at      DateTime          @default(now())
+  updated_at      DateTime          @updatedAt
+  deleted         Boolean           @default(false)
+  ShoppingSession ShoppingSession[]
 }
 
 model OrderDetails {
@@ -127,6 +128,9 @@ model ShippingDetails {
 model ShoppingSession {
   id    Int     @id @default(autoincrement())
   total Decimal @default(00.00)
+
+  order   User @relation(fields: [user_id], references: [id])
+  user_id Int
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
