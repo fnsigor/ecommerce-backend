@@ -1,6 +1,6 @@
 import { fastifyCors } from '@fastify/cors';
 import { createUser, login } from './controller/UserController';
-import { createShoppingSession } from './controller/ShoppingSessionController';
+import { createShoppingSession, updateShoppingSession } from './controller/ShoppingSessionController';
 
 export const fastify = require('fastify')()
 
@@ -14,6 +14,7 @@ fastify.register(require('./middlewares/jwt'));
 fastify.register(createUser)
 fastify.register(login)
 fastify.register(createShoppingSession)
+fastify.register(updateShoppingSession)
 
 
 fastify.listen({
