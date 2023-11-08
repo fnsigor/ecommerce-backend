@@ -63,28 +63,16 @@ model ProductCategory {
   deleted    Boolean  @default(false)
 }
 
-model ProductInventory {
-  id       Int    @id @default(autoincrement())
-  name     String
-  quantity Int
-
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
-  deleted    Boolean   @default(false)
-  Product    Product[]
-}
-
 model Product {
   id           Int     @id @default(autoincrement())
   picture_path String
   description  String
   price        Decimal
+  features     String
+  name         String  @default("")
 
   category    ProductCategory @relation(fields: [category_id], references: [id])
   category_id Int
-
-  inventory    ProductInventory @relation(fields: [inventory_id], references: [id])
-  inventory_id Int
 
   order_items OrderItem[]
 
