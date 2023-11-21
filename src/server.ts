@@ -1,6 +1,7 @@
 import { fastifyCors } from '@fastify/cors';
 import { createUser, login } from './controller/UserController';
 import { createShoppingSession, updateShoppingSession } from './controller/ShoppingSessionController';
+import { getAllProductCategories, getCategoryImage } from './controller/ProductCategoryController';
 
 export const fastify = require('fastify')()
 
@@ -15,6 +16,8 @@ fastify.register(createUser)
 fastify.register(login)
 fastify.register(createShoppingSession)
 fastify.register(updateShoppingSession)
+fastify.register(getAllProductCategories)
+fastify.register(getCategoryImage)
 
 
 fastify.listen({
